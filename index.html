@@ -31,12 +31,57 @@
     <!-- add navbar -->
     <!-- for future reference: mx-auto in bootstrap 4 will center content in nav bars -->
     <!-- https://stackoverflow.com/questions/33867603/center-an-element-in-bootstrap-4-navbar -->
-    <nav class="navbar navbar-dark bg-dark navbar-center">
-      <span class="navbar-text navbar-center mx-auto" id="heading"
-        >Weather Dashboard
-      </span>
-    </nav>
+    <header>
+      <nav class="navbar navbar-dark bg-dark navbar-center">
+        <span class="navbar-text navbar-center mx-auto" id="heading"
+          >Weather Dashboard
+        </span>
+      </nav>
+    </header>
+    <!-- end of nav bar -->
 
+    <!-- make a container -->
+    <div class="container">
+      <!-- column for the search bar and recently searched cities -->
+      <div class="col-sm-4">
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+        <!-- DYNAMICALLY GENERATED OLD SEARCH RESULTS -->
+        <!-- end of col of 4 below -->
+      </div>
+      <!-- start of second column to hold the current temp and 5 day forecast  -->
+      <div class="col-sm-8">
+        <!-- current data -->
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title" id="current-city"></h5>
+            <p class="card-text" id="temperature">
+              Temperature:
+            </p>
+            <p class="card-text" id="humidity">
+              Humidity:
+            </p>
+            <p class="card-text" id="wind">
+              Wind:
+            </p>
+            <p class="card-text" id="uv">
+              UV:
+            </p>
+          </div>
+        </div>
+        <!-- end of 8 unit column below  -->
+      </div>
+      <!-- end of container below -->
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
