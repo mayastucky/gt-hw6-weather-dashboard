@@ -28,7 +28,30 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- add navbar -->
+    <!-- for future reference: mx-auto in bootstrap 4 will center content in nav bars -->
+    <!-- https://stackoverflow.com/questions/33867603/center-an-element-in-bootstrap-4-navbar -->
+    <nav class="navbar navbar-dark bg-dark navbar-center">
+      <span class="navbar-text navbar-center mx-auto" id="heading"
+        >Weather Dashboard
+      </span>
+    </nav>
 
     <script src="script.js"></script>
   </body>
 </html>
+
+<!-- psuedocoding -->
+<!-- 1. lay out index.html 
+  a. header
+  b. form with "search for a city"
+  c. divs for most recently searched cities 
+  d. display current city 
+    - temperature
+    -humidity
+    -wind speed
+    -UV index 
+  e. 5 day forecast 
+2. js: 
+  a. request API 
+  b. dynamically display it in the corresponding sections  -->
