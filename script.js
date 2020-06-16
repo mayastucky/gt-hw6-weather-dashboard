@@ -7,7 +7,7 @@ $(document).ready(function () {
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
-    "&units=imperial&" +
+    "&appid=" +
     APIkey;
 
   $.ajax({
