@@ -46,67 +46,68 @@
 
     <!-- make a container -->
     <div class="container">
-      <!-- column for the search bar and recently searched cities -->
-      <div class="col-sm-4">
-        <h5 style="margin-top: 10px;">Search for a City:</h5>
-        <div class="input-group mb-3">
-          <input
-            id="searchCity"
-            type="text"
-            class="form-control"
-            class="input-group-append"
-          />
-          <!-- Could not get my button on the same line as the input field so looked to https://github.com/Joelynn94/weather-dashboard for help :) -->
-          <button
-            id="searchBtn"
-            class="btn btn-primary"
-            type="button"
-            id="button-addon2"
-          >
-            <i class="far fa-search"></i>
-          </button>
-        </div>
-        <!-- DYNAMICALLY GENERATED OLD SEARCH RESULTS -->
-        <!-- end of col of 4 below -->
-      </div>
-      <!-- start of second column to hold the current temp and 5 day forecast  -->
-      <!-- <div class="row"> -->
-      <div class="col-sm-10">
-        <!-- current data -->
-        <div class="card w-50" style="width: 18rem;">
-          <div class="card-body">
-            <h3 class="card-title" id="current-city"></h3>
-            <p class="card-text">
-              Temperature:
-              <span id="temperature"></span>
-            </p>
-            <p class="card-text">
-              Humidity:
-              <span id="humidity"></span>
-            </p>
-            <p class="card-text">
-              Wind:
-              <span id="wind"></span>
-            </p>
-            <p class="card-text">
-              UV:
-              <span id="uv"></span>
-            </p>
+      <div class="row">
+        <!-- column for the search bar and recently searched cities -->
+        <div class="col-sm-4">
+          <h5 style="margin-top: 10px;">Search for a City:</h5>
+          <div class="input-group mb-3">
+            <input
+              id="searchCity"
+              type="text"
+              class="form-control"
+              class="input-group-append"
+            />
+            <!-- Could not get my button on the same line as the input field so looked to https://github.com/Joelynn94/weather-dashboard for help :) -->
+            <button id="searchBtn" class="btn btn-primary" type="button">
+              <i class="far fa-search"></i>
+            </button>
           </div>
-          <!-- end of card  -->
+          <!-- DYNAMICALLY GENERATED OLD SEARCH RESULTS -->
+          <!-- end of col of 4 below -->
         </div>
-        <div class="row" id="forecast"></div>
-        <div class="col-sm-10" style="float: right;"></div>
-          <h3>5 Day Forecast</h3>
-          <div class="col" id="day1"></div>
-          <div class="col" id="day2"></div>
-          <div class="col" id="day3"></div>
-          <div class="col" id="day4"></div>
-          <div class="col" id="day5"></div>
+        <!-- start of second column to hold the current temp and 5 day forecast  -->
+        <!-- <div class="row"> -->
+        <div class="col-sm-8">
+          <!-- current data -->
+          <div class="row">
+            <div class="card w-50" style="width: 18rem;">
+              <div class="card-body">
+                <h3 class="card-title" id="current-city"></h3>
+                <p class="card-text">
+                  Temperature:
+                  <span id="temperature"></span>
+                </p>
+                <p class="card-text">
+                  Humidity:
+                  <span id="humidity"></span>
+                </p>
+                <p class="card-text">
+                  Wind:
+                  <span id="wind"></span>
+                </p>
+                <p class="card-text">
+                  UV:
+                  <span id="uv"></span>
+                </p>
+              </div>
+              <!-- end of card  -->
+            </div>
+          </div>
+          <!-- <div class="row" id="forecast"></div> -->
+          <!-- <div class="col-sm-10" style="float: right;"></div> -->
+          <div class="row">
+            <h3>5 Day Forecast</h3>
+            <div class="col" id="day1"></div>
+            <div class="col" id="day2"></div>
+            <div class="col" id="day3"></div>
+            <div class="col" id="day4"></div>
+            <div class="col" id="day5"></div>
+          </div>
           <!-- end of 8 unit column below  -->
         </div>
       </div>
       <!-- </div> -->
+
       <!-- end of container below -->
     </div>
     <script src="script.js"></script>
