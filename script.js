@@ -33,7 +33,45 @@ $(document).ready(function () {
       console.log(response.wind.speed);
 
       //NEED SEPARATE API CALL FOR UV RAYS!
-      // var cityUV = $("#uv").text(response.)
+
+      //get lat and long from last call
+      var lat = response.coord.lat;
+      console.log(lat);
+      var long = response.coord.lon;
+      console.log(long);
+
+      // now let's do the api call
+
+      var UVurl =
+        "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+        APIkey +
+        "&lat=" +
+        lat +
+        "&lon=" +
+        long;
+
+      $.ajax({
+        url: UVurl,
+        method: "GET",
+      }).then(function (response) {
+        console.log(response);
+        $("#uv").text(response.value);
+
+        // 5 day forecast call
+      });
+
+      var forecastURL =
+        "api.openweathermap.org/data/2.5/forecast?q=" +
+        city +
+        "&units=imperial&appid=" +
+        APIkey;
+      $.ajax({
+        url: forecastURL,
+        method: "GET",
+      }).then(function (response) {
+        console.log(response);
+      });
+      // end of promise below
     });
   }
 
