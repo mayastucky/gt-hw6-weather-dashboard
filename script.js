@@ -61,7 +61,7 @@ $(document).ready(function () {
       });
 
       var forecastURL =
-        "api.openweathermap.org/data/2.5/forecast?q=" +
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
         city +
         "&units=imperial&appid=" +
         APIkey;
@@ -70,6 +70,67 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (response) {
         console.log(response);
+        var results = response.list;
+        //need to get important info from the forecast
+        for (var i = 0; i < 5; i++) {
+          //date
+          var date = results[i].dt_text;
+          //temperature
+          var temperature = results[i].main.temp;
+          //humidity
+          var humidity = results[i].main.humidity;
+          //dynamically create the card
+
+          //creates the entire card
+          var forecastEl = $(
+            "<div class = 'card' style = 'width: 9rem; height: 11rem;'>"
+          );
+          //create header with date
+          //NOT APPENDING
+          var dateHeadEl = $("<h5 class = 'card-title'>").text(date);
+          //create paragraph with temperature
+          var tempEl = $("<p class= 'card-text'>").text("Temp:" + temperature);
+          //create paragraph with humidity
+          var humidityEl = $("<p class = 'card-text'>").text(
+            "Humidity:" + humidity
+          );
+
+          //icons!
+          var generalWeather = results[i].weather[0].main;
+          if (generalWeather === "Rain") {
+            var icon = $("<img>").attr(
+              "src",
+              "http://openweathermap.org/img/wn/09d@2x.png"
+            );
+            icon.attr("style", "height: 40px; width: 40px");
+          } else if (generalWeather === "Clouds") {
+            var icon = $("<img>").attr(
+              "src",
+              "http://openweathermap.org/img/wn/04d@2x.png"
+            );
+            icon.attr("style", "height: 40px; width: 40px");
+          } else if (generalWeather === "Clear") {
+            var icon = $("<img>").attr(
+              "src",
+              "http://openweathermap.org/img/wn/01d@2x.png"
+            );
+            icon.attr("style", "height: 40px; width: 40px");
+          } else if (generalWeather === "Drizzle") {
+            var icon = $("<img>").attr("src");
+            icon.attr("style", "height: 40px; width: 40px");
+          } else if (generalWeather === "Snow") {
+            var icon = $("<img>").attr(
+              "src",
+              "http://openweathermap.org/img/wn/13d@2x.png"
+            );
+            icon.attr("style", "height: 40px; width: 40px");
+          }
+          forecastEl.append(dateHeadEl);
+          forecastEl.append(icon);
+          forecastEl.append(tempEl);
+          forecastEl.append(humidityEl);
+          $("#forecast").append(forecastEl);
+        }
       });
       // end of promise below
     });
