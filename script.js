@@ -40,7 +40,7 @@ $(document).ready(function () {
       var long = response.coord.lon;
       console.log(long);
 
-      // now let's do the api call
+      //UV API CALL
 
       var UVurl =
         "http://api.openweathermap.org/data/2.5/uvi?appid=" +
@@ -56,10 +56,9 @@ $(document).ready(function () {
       }).then(function (response) {
         console.log(response);
         $("#uv").text(response.value);
-
-        // 5 day forecast call
       });
 
+      //forecast api call
       var forecastURL =
         "https://api.openweathermap.org/data/2.5/forecast?q=" +
         city +
@@ -82,17 +81,18 @@ $(document).ready(function () {
           //dynamically create the card
 
           //creates the entire card
+          // "<div class = 'card' style = 'width: 9rem; height: 11rem;'>"
           var forecastEl = $(
-            "<div class = 'card' style = 'width: 9rem; height: 11rem;'>"
+            "<div class='card text-white bg-primary mx-auto mb-10 p-2' style='width: 8.5rem; height: 11rem;'>"
           );
           //create header with date
           //NOT APPENDING
           var dateHeadEl = $("<h5 class = 'card-title'>").text(date);
           //create paragraph with temperature
-          var tempEl = $("<p class= 'card-text'>").text("Temp:" + temperature);
+          var tempEl = $("<p class= 'card-text'>").text("Temp: " + temperature);
           //create paragraph with humidity
           var humidityEl = $("<p class = 'card-text'>").text(
-            "Humidity:" + humidity
+            "Humidity: " + humidity + "%"
           );
 
           //icons!
