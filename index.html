@@ -25,6 +25,10 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://kit.fontawesome.com/ca89a4b9f5.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -44,23 +48,32 @@
     <div class="container">
       <!-- column for the search bar and recently searched cities -->
       <div class="col-sm-4">
-        <form>
-          <div class="form-group">
-            <label for="userCity"><strong>Search For a City: </strong></label>
-            <input type="search" class="form-control" id="userCity" />
-          </div>
-
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
+        <h5 style="margin-top: 10px;">Search for a City:</h5>
+        <div class="input-group mb-3">
+          <input
+            id="searchCity"
+            type="text"
+            class="form-control"
+            class="input-group-append"
+          />
+          <!-- Could not get my button on the same line as the input field so looked to https://github.com/Joelynn94/weather-dashboard for help :) -->
+          <button
+            id="searchBtn"
+            class="btn btn-primary"
+            type="button"
+            id="button-addon2"
+          >
+            <i class="far fa-search"></i>
           </button>
-        </form>
+        </div>
         <!-- DYNAMICALLY GENERATED OLD SEARCH RESULTS -->
         <!-- end of col of 4 below -->
       </div>
       <!-- start of second column to hold the current temp and 5 day forecast  -->
-      <div class="col-sm-8">
+      <!-- <div class="row"> -->
+      <div class="col-sm-10">
         <!-- current data -->
-        <div class="card" style="width: 18rem;">
+        <div class="card w-50" style="width: 18rem;">
           <div class="card-body">
             <h3 class="card-title" id="current-city"></h3>
             <p class="card-text">
@@ -80,16 +93,20 @@
               <span id="uv"></span>
             </p>
           </div>
+          <!-- end of card  -->
         </div>
         <div class="row" id="forecast"></div>
-        <h3>5 Day Forecast</h3>
-        <div class="col" id="day1"></div>
-        <div class="col" id="day2"></div>
-        <div class="col" id="day3"></div>
-        <div class="col" id="day4"></div>
-        <div class="col" id="day5"></div>
-        <!-- end of 8 unit column below  -->
+        <div class="col-sm-10" style="float: right;"></div>
+          <h3>5 Day Forecast</h3>
+          <div class="col" id="day1"></div>
+          <div class="col" id="day2"></div>
+          <div class="col" id="day3"></div>
+          <div class="col" id="day4"></div>
+          <div class="col" id="day5"></div>
+          <!-- end of 8 unit column below  -->
+        </div>
       </div>
+      <!-- </div> -->
       <!-- end of container below -->
     </div>
     <script src="script.js"></script>

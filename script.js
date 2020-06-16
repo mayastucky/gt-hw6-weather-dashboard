@@ -1,7 +1,7 @@
 $(document).ready(function () {
   console.log("JavaScript LINKED!");
 
-  var city = "Brunswick";
+  var city = "Beirut";
   var dateToday = moment().format("L");
   var APIkey = "6340db1bd8528765d6e74f5851c1d26a";
   var queryURL =
