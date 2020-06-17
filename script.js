@@ -196,8 +196,8 @@ $(document).ready(function () {
   function renderButtons(city) {
     historyArray.push(city);
     console.log(historyArray);
-    localStorage.setItem("citySelected", historyArray);
-    var cityArrayFromStorage = localStorage.getItem("citySelected").split(",");
+    localStorage.setItem("citySelected", JSON.stringify(historyArray));
+    var cityArrayFromStorage = JSON.parse(localStorage.getItem("citySelected"));
     console.log(cityArrayFromStorage); //cityArrayFromStorage is a string and we need to turn it into an array
 
     cityArrayFromStorage.forEach(function (item) {
@@ -205,7 +205,8 @@ $(document).ready(function () {
       var cityButtons = $("<button>");
       cityButtons.text(item);
       var searchedCities = $("#searched-cities");
-      cityButtons.append(searchedCities);
+      searchedCities.empty();
+      searchedCities.append(cityButtons);
     });
   }
 
