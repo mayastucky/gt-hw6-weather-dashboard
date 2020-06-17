@@ -136,14 +136,34 @@ $(document).ready(function () {
     });
   }
 
+  function pageLoad() {}
+
   var searchButtonEl = $("#searchBtn");
 
   searchButtonEl.on("click", function () {
+    event.preventDefault();
     var city = $("#searchCity").val();
     searchForCity(city);
+
+    //save to local storage
+    // var userCity = ???????????????
+    var cityArray = [];
+    cityArray.push(userCity);
+    localStorage.setItem("cityName", JSON.stringify(cityArray));
+    loadPage();
     //call function to be written that renders the buttons
     //search for last city searched can be saved as a separate value in local storage or grab last element in array and have that load on page load
   });
+
+  function loadPage() {
+    var lastSearched = JSON.parse(localStorage.getItem("cityName"));
+    var searchedButtons = $(
+      "<button class = 'btn bg-white rounded' style='width: 12rem;'>"
+    ).text(lastSearched);
+    var citySearch = $("<div>");
+    citySearch.append(searchedButtons);
+    $("#searchedcities").prepend(citySearch);
+  }
 });
 
 // PSEUDOCODING:
