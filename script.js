@@ -2,8 +2,9 @@ $(document).ready(function () {
   console.log("JavaScript LINKED!");
   var historyArray = [];
 
+  var dateToday = moment().format("L");
   function searchForCity(city) {
-    var dateToday = moment().format("L");
+    // var dateToday = moment().format("L");
     var APIkey = "6340db1bd8528765d6e74f5851c1d26a";
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -64,7 +65,7 @@ $(document).ready(function () {
         );
         icon.attr("style", "height: 40px; width: 40px");
       }
-
+      $("<img>").empty();
       //append the icons
       $("#current-city-card").append(icon);
       //NEED SEPARATE API CALL FOR UV RAYS!
@@ -106,10 +107,13 @@ $(document).ready(function () {
         $("#forecast").empty();
         console.log(response);
         var results = response.list;
+        //generating the dates to progress was aided by https://github.com/cmelby/WeatherDashboard
         //need to get important info from the forecast
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < results.length; i += 8) {
           //date
-          var date = results[i].dt_text;
+          var date = results[i].dt_txt;
+          var setDate = date.substr(0, 10);
+          console.log("date", date);
           //temperature
           var temperature = results[i].main.temp;
           //humidity
@@ -117,13 +121,12 @@ $(document).ready(function () {
           //dynamically create the card
 
           //creates the entire card
-          // "<div class = 'card' style = 'width: 9rem; height: 11rem;'>"
           var forecastEl = $(
             "<div class='card text-white bg-primary mx-auto mb-10 p-2' style='width: 8.5rem; height: 11rem;'>"
           );
           //create header with date
-          //NOT APPENDING
-          var dateHeadEl = $("<h5 class = 'card-title'>").text(date);
+          //NOT APPENDING CORRECTLY
+          var dateHeadEl = $("<h5 class = 'card-title'>").text(setDate);
           //create paragraph with temperature
           var tempEl = $("<p class= 'card-text'>").text("Temp: " + temperature);
           //create paragraph with humidity
