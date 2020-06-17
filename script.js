@@ -1,5 +1,6 @@
 $(document).ready(function () {
   console.log("JavaScript LINKED!");
+  var historyArray = [];
 
   function searchForCity(city) {
     var dateToday = moment().format("L");
@@ -179,27 +180,44 @@ $(document).ready(function () {
     event.preventDefault();
     var city = $("#searchCity").val();
     searchForCity(city);
+    renderButtons(city);
 
     //save to local storage
-    //NEED USER CITY
-    var cityArray = [];
-    cityArray.push(userCity);
-    localStorage.setItem("cityName", JSON.stringify(cityArray));
-    searchForCity(city);
-    loadPage();
+    //NEED USER
+
+    // cityArray.push(userCity);
+    // localStorage.setItem("cityName", JSON.stringify(cityArray));
+    // searchForCity(city);
+    // loadPage();
     //call function to be written that renders the buttons
     //search for last city searched can be saved as a separate value in local storage or grab last element in array and have that load on page load
   });
 
-  function loadPage() {
-    var lastSearched = JSON.parse(localStorage.getItem("cityName"));
-    var searchedButtons = $(
-      "<button class = 'btn bg-white rounded' style='width: 12rem;'>"
-    ).text(lastSearched);
-    var buttonArea = $("<div>");
-    buttonArea.append(searchedButtons);
-    $("#searchedcities").prepend(buttonArea);
+  function renderButtons(city) {
+    historyArray.push(city);
+    console.log(historyArray);
+    localStorage.setItem("citySelected", historyArray);
+    var cityArrayFromStorage = localStorage.getItem("citySelected").split(",");
+    console.log(cityArrayFromStorage); //cityArrayFromStorage is a string and we need to turn it into an array
+
+    cityArrayFromStorage.forEach(function (item) {
+      console.log(item);
+      var cityButtons = $("<button>");
+      cityButtons.text(item);
+      var searchedCities = $("#searched-cities");
+      cityButtons.append(searchedCities);
+    });
   }
+
+  // function loadPage() {
+  //   var lastSearched = JSON.parse(localStorage.getItem("cityName"));
+  //   var searchedButtons = $(
+  //     "<button class = 'btn bg-white rounded' style='width: 12rem;'>"
+  //   ).text(lastSearched);
+  //   var buttonArea = $("<div>");
+  //   buttonArea.append(searchedButtons);
+  //   $("#searchedcities").prepend(buttonArea);
+  // }
 });
 
 // PSEUDOCODING:
