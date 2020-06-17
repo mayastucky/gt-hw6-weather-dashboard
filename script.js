@@ -199,13 +199,15 @@ $(document).ready(function () {
     localStorage.setItem("citySelected", JSON.stringify(historyArray));
     var cityArrayFromStorage = JSON.parse(localStorage.getItem("citySelected"));
     console.log(cityArrayFromStorage); //cityArrayFromStorage is a string and we need to turn it into an array
+    $("#searched-cities").empty();
 
     cityArrayFromStorage.forEach(function (item) {
       console.log(item);
       var cityButtons = $("<button>");
+      cityButtons.attr("class", "btn btn-light");
       cityButtons.text(item);
       var searchedCities = $("#searched-cities");
-      searchedCities.empty();
+      //searchedCities.empty();
       searchedCities.append(cityButtons);
     });
   }
