@@ -91,6 +91,14 @@ $(document).ready(function () {
         method: "GET",
       }).then(function (response) {
         console.log(response);
+        var uvNum = response.value;
+        if (uvNum < 3) {
+          $("#uv").addClass("badge badge-pill badge-success");
+        } else if (uvNum < 7) {
+          $("#uv").addClass("badge badge-pill badge-warning");
+        } else {
+          $("#uv").addClass("badge badge-pill badge-danger");
+        }
         $("#uv").text(response.value);
       });
 
@@ -107,7 +115,7 @@ $(document).ready(function () {
         $("#forecast").empty();
         console.log(response);
         var results = response.list;
-        //generating the dates to progress was aided by https://github.com/cmelby/WeatherDashboard
+        //generating the dates to progress was helped by https://github.com/cmelby/WeatherDashboard
         //need to get important info from the forecast
         for (var i = 0; i < results.length; i += 8) {
           //date
